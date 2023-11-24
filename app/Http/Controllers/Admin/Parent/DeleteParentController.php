@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ParentRequest;
 use App\Actions\Parent\DeleteParentAction;
 use Illuminate\Http\JsonResponse;
 use App\Models\User;
 
-class DeleteParentController extends Controller {
-    public function update(User $user, DeleteParentAction $action): JsonResponse{
+class DeleteParentController extends Controller
+{
+    public function update(User $user, DeleteParentAction $action): JsonResponse
+    {
         $action->handle($user);
         return response()->json([
             'status' => 200,
