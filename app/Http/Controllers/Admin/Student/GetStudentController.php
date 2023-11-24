@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Parent;
+namespace App\Http\Controllers\Admin\Student;
 
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\Users\StudentRepository;

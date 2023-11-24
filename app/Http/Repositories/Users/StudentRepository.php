@@ -3,6 +3,7 @@
 namespace App\Http\Repositories\Users;
 
 use App\Enums\UserRoles;
+use App\Models\User;
 
 class StudentRepository
 {

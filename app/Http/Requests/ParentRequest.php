@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 use App\Exceptions\ValidationError;
 use App\Entities\User\ParentEntity;
+use Illuminate\Contracts\Validation\Validator;
 
 class ParentRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class ParentRequest extends FormRequest
             'name' => ['required', 'string'],
             'surname' => ['required', 'string'],
             'patronymic' => ['string'],
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email', 'unique:users'],
             'password' => [$this->user ? 'nullable' : 'required', 'string', Password::min(8)
                 ->mixedCase()
                 ->numbers()

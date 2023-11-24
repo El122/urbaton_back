@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\Admin\Parent\GetParentController;
 use App\Http\Controllers\Admin\Parent\GetStudentController;
-use App\Http\Controllers\CreateParentController;
-use App\Http\Controllers\CreateStudentController;
-use App\Http\Controllers\DeleteParentController;
-use App\Http\Controllers\UpdateParentController;
-use App\Http\Controllers\UpdateStudentController;
+use App\Http\Controllers\Admin\Parent\CreateParentController;
+use App\Http\Controllers\Admin\Student\CreateStudentController;
+use App\Http\Controllers\Admin\Parent\DeleteParentController;
+use App\Http\Controllers\Admin\Parent\UpdateParentController;
+use App\Http\Controllers\Admin\Student\UpdateStudentController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +17,7 @@ Route::get('/make-me-an-admin-beatch', function () {
 
 Route::group(['middleware' => [
     'auth:sanctum',
-    'role:' . \App\Enums\UserRoles::ROLE_ADMIN
+    'role:' . \App\Enums\UserRoles::ROLE_ADMIN->value
 ]], function () {
     Route::group([
         'as' => 'parents.',
@@ -26,8 +26,8 @@ Route::group(['middleware' => [
         Route::get('/get', [GetParentController::class, 'all'])->name('all');
         Route::get('/get/{parent}', [GetParentController::class, 'byId'])->name('byId');
         Route::post('/create', [CreateParentController::class, 'create'])->name('create');
-        Route::post('/update', [UpdateParentController::class, 'update'])->name('update');
-        Route::post('/delete', [DeleteParentController::class, 'delete'])->name('delete');
+        Route::post('/update/{parent}', [UpdateParentController::class, 'update'])->name('update');
+        Route::post('/delete/{parent}', [DeleteParentController::class, 'delete'])->name('delete');
     });
 
     Route::group([

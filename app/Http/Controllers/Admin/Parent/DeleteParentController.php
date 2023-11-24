@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\Parent;
 
 use App\Http\Controllers\Controller;
 use App\Actions\Parent\DeleteParentAction;
@@ -9,9 +9,9 @@ use App\Models\User;
 
 class DeleteParentController extends Controller
 {
-    public function update(User $user, DeleteParentAction $action): JsonResponse
+    public function delete(User $parent, DeleteParentAction $action): JsonResponse
     {
-        $action->handle($user);
+        $action->handle($parent);
         return response()->json([
             'status' => 200,
             'message' => 'Parent deleted successfully',

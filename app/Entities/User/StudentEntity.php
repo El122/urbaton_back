@@ -3,15 +3,21 @@
 namespace App\Entities\User;
 
 class Student {
-    public function __constructor(
-        public string $name,
-        public string $surname,
-        public string $patronymic,
-        public string $email,
-        public ?string $password,
-        public int $group,
-    ) {
 
+    public string $name;
+    public string $surname;
+    public string $patronymic;
+    public string $email;
+    public ?string $password;
+    public int $group;
+
+    public function __construct($name, $surname, $patronymic, $email, $password, $group) {
+        $this->name = $name;
+        $this->surname = $surname;
+        $this->patronymic = $patronymic;
+        $this->email = $email;
+        $this->password = $password;
+        $this->group = $group;
     }
 
     public function getModel() {
