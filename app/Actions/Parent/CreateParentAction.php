@@ -6,8 +6,10 @@ use App\Models\User;
 use App\Entities\User\ParentEntity;
 use Illuminate\Support\Facades\Hash;
 
-class CreateParentAction {
-    public function handle(ParentEntity $parentEntity): User {
+class CreateParentAction
+{
+    public function handle(ParentEntity $parentEntity): User
+    {
         $user = User::create([
             ...$parentEntity->getModel(),
             'password' => Hash::make($parentEntity->password),
