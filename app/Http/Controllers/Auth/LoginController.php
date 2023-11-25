@@ -31,7 +31,8 @@ class LoginController extends Controller {
             'message' => 'Success login',
             'data' => [
                 'token' => $user->createToken($request->email)->plainTextToken,
-                'user' => $user,
+                'user' => $user->withoutRelations(),
+                'role' => $user->getRoleNames(),
             ]
         ]);
     }
