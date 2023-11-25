@@ -40,9 +40,9 @@ Route::group(['middleware' => [
     ], function () {
         Route::get('/', [GetTeacherController::class, 'all'])->name('all');
         Route::post('/create', [CreateTeacherController::class, 'create'])->name('create');
-        Route::get('/{parent}', [GetTeacherController::class, 'byId'])->name('byId');
-        Route::post('/{parent}/update', [UpdateTeacherController::class, 'update'])->name('update');
-        Route::post('/{parent}/delete', [DeleteTeacherController::class, 'delete'])->name('delete');
+        Route::get('/{teacher}', [GetTeacherController::class, 'byId'])->name('byId');
+        Route::post('/{teacher}/update', [UpdateTeacherController::class, 'update'])->name('update');
+        Route::post('/{teacher}/delete', [DeleteTeacherController::class, 'delete'])->name('delete');
     });
 
     Route::group([

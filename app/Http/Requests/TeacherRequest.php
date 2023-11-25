@@ -23,13 +23,14 @@ class TeacherRequest extends FormRequest {
             'surname' => ['required', 'string'],
             'patronymic' => ['string'],
             'email' => ['required', 'email', 'unique:users'],
-            'password' => [
-                $this->user ? 'nullable' : 'required', 'string', Password::min(8)
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols()
-                    ->uncompromised(),
+            'password' => [$this->user ? 'nullable' : 'required', 'string', Password::min(8)
+                ->mixedCase()
+                ->numbers()
+                ->symbols()
+                ->uncompromised(),
             ],
+            'experience' => ['required', 'integer'],
+            'role' => ['nullable', 'string'],
         ];
     }
 
@@ -40,6 +41,8 @@ class TeacherRequest extends FormRequest {
             $this->patronymic,
             $this->email,
             $this->password,
+            $this->experience,
+            $this->role,
         );
     }
 }

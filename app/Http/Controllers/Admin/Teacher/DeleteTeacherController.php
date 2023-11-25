@@ -8,8 +8,8 @@ use Illuminate\Http\JsonResponse;
 use App\Models\User;
 
 class DeleteTeacherController extends Controller {
-    public function update(User $user, DeleteTeacherAction $action): JsonResponse{
-        $action->handle($user);
+    public function delete(User $teacher, DeleteTeacherAction $action): JsonResponse{
+        $action->handle($teacher);
         return response()->json([
             'status' => 200,
             'message' => 'Teacher deleted successfully',

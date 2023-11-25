@@ -6,9 +6,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Student;
+use App\Models\Teacher;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -48,7 +49,11 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function student(): BelongsTo {
-        return $this->belongsTo(Student::class);
+    public function student(): HasOne {
+        return $this->hasOne(Student::class);
+    }
+
+    public function teacher(): HasOne {
+        return $this->hasOne(Teacher::class);
     }
 }

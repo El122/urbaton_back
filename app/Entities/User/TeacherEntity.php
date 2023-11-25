@@ -3,18 +3,18 @@
 namespace App\Entities\User;
 
 class TeacherEntity {
-    public string $name;
-    public string $surname;
-    public string $patronymic;
-    public string $email;
-    public ?string $password;
+    public string $user_id;
+    public ?int $experience;
+    public string $role;
 
-    public function __construct($name, $surname, $patronymic, $email, $password) {
+    public function __construct($name, $surname, $patronymic, $email, $password, $experience, $role) {
         $this->name = $name;
         $this->surname = $surname;
         $this->patronymic = $patronymic;
         $this->email = $email;
         $this->password = $password;
+        $this->experience = $experience;
+        $this->role = $role;
     }
 
     public function getModel() {

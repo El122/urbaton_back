@@ -16,5 +16,11 @@ class UpdateTeacherAction {
         } else {
             $user->update($teacherEntity->getModel());
         }
+        dd($user->teacher);
+        $user->teacher()->update([
+            'role' => $teacherEntity->role,
+            'experience' => $teacherEntity->experience,
+        ]);
+        $user->refresh();
     }
 }

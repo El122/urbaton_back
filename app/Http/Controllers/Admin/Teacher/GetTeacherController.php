@@ -23,7 +23,7 @@ class GetTeacherController extends Controller {
     public function byId(User $teacher): JsonResponse {
         return response()->json([
             'status' => Response::HTTP_OK,
-            'message' => 'Teachers successfully get',
+            'message' => 'Teacher successfully get',
             'data' => $teacher,
         ]);
     }

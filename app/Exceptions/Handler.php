@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Symfony\Component\HttpFoundation\Response;
 
 class Handler extends ExceptionHandler
 {
@@ -26,5 +27,19 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, $e): \Illuminate\Http\Response|\Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\Response {
+        if ($e instanceof ModelNotFoundException) {
+            return response()->json([
+                'status' => Response::HTTP_NOT_FOUND,
+                'message' => 'Not Found'], Response::HTTP_NOT_FOUND);
+        }
+        if($e instanceof AuthenticationException)
+            return response()->json([
+                'status' => Response::HTTP_UNAUTHORIZED,
+                'message' => 'Unauthorized'], Response::HTTP_UNAUTHORIZED);
+
+        return parent::render($request, $e);
     }
 }
