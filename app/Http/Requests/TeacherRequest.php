@@ -23,6 +23,7 @@ class TeacherRequest extends FormRequest {
             'surname' => ['required', 'string'],
             'patronymic' => ['string'],
             'email' => ['required', 'email', 'unique:users'],
+            'phone' => ['required', 'string'],
             'password' => [$this->user ? 'nullable' : 'required', 'string', Password::min(8)
                 ->mixedCase()
                 ->numbers()
@@ -40,6 +41,7 @@ class TeacherRequest extends FormRequest {
             $this->surname,
             $this->patronymic,
             $this->email,
+            $this->phone,
             $this->password,
             $this->experience,
             $this->role,
