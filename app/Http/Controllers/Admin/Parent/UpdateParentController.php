@@ -10,11 +10,10 @@ use App\Models\User;
 
 class UpdateParentController extends Controller {
     public function update(User $user, ParentRequest $request, UpdateParentAction $action): JsonResponse{
-        $data = $action->handle($user, $request->getEntity());
+        $action->handle($user, $request->getEntity());
         return response()->json([
             'status' => 200,
             'message' => 'Parent updated successfully',
-            'data' => $data,
         ]);
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin\Parent;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ParentRequest;
 use App\Actions\Parent\CreateParentAction;
+use App\Http\Requests\ParentRequest;
 use Illuminate\Http\JsonResponse;
 
 class CreateParentController extends Controller {

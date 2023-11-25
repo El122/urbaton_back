@@ -26,7 +26,7 @@ class ParentRequest extends FormRequest
             'surname' => ['required', 'string'],
             'patronymic' => ['string'],
             'email' => ['required', 'email', 'unique:users'],
-            'password' => [$this->user ? 'nullable' : 'required', 'string', Password::min(8)
+            'password' => [$this->parent ? 'nullable' : 'required', 'string', Password::min(8)
                 ->mixedCase()
                 ->numbers()
                 ->symbols()

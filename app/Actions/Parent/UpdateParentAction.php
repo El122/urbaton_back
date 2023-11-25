@@ -7,7 +7,7 @@ use App\Entities\User\ParentEntity;
 use Illuminate\Support\Facades\Hash;
 
 class UpdateParentAction {
-    public function handle(User $user, ParentEntity $parentEntity): User {
+    public function handle(User $user, ParentEntity $parentEntity): void {
         if ($parentEntity->password) {
             $user->update([
                 ...$parentEntity->getModel(),
@@ -16,7 +16,5 @@ class UpdateParentAction {
         } else {
             $user->update($parentEntity->getModel());
         }
-        $user->refresh();
-        return $user;
     }
 }
