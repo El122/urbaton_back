@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\Parent\UpdateParentController;
 use App\Http\Controllers\Admin\Student\UpdateStudentController;
 use App\Http\Controllers\Admin\Teacher\UpdateTeacherController;
 use App\Http\Controllers\Admin\Teacher\TeacherSubjectController;
+use App\Http\Controllers\Admin\Parent\ParentStudentController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,13 @@ Route::group(['middleware' => [
         Route::get('/{parent}', [GetParentController::class, 'byId'])->name('byId');
         Route::post('/{parent}/update', [UpdateParentController::class, 'update'])->name('update');
         Route::post('/{parent}/delete', [DeleteParentController::class, 'delete'])->name('delete');
+        Route::group([
+            'as' => 'students.',
+            'prefix' => 'students',
+        ], function () {
+            Route::post('/attach', [ParentStudentController::class, 'add'])->name('add');
+            Route::post('/detach', [ParentStudentController::class, 'delete'])->name('delete');
+        });
     });
 
     Route::group([
