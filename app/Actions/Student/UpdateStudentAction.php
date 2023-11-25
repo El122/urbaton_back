@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class UpdateStudentAction {
     public function handle(User $user, StudentEntity $studentEntity): User {
-        return DB::transaction(function() use($studentEntity) {
+        return DB::transaction(function() use($user, $studentEntity) {
             if ($studentEntity->password) {
                 $user->update([
                     ...$studentEntity->getModel(),

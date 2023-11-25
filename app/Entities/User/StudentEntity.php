@@ -1,9 +1,8 @@
-<?php 
+<?php
 
 namespace App\Entities\User;
 
-class Student {
-
+class StudentEntity {
     public string $name;
     public string $surname;
     public string $patronymic;
@@ -20,7 +19,7 @@ class Student {
         $this->group = $group;
     }
 
-    public function getModel() {
+    public function getModel(): array {
         return [
             'name' => $this->name,
             'surname' => $this->surname,
