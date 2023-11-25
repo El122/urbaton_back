@@ -9,8 +9,8 @@ use Illuminate\Http\JsonResponse;
 use App\Models\User;
 
 class UpdateParentController extends Controller {
-    public function update(User $user, ParentRequest $request, UpdateParentAction $action): JsonResponse{
-        $action->handle($user, $request->getEntity());
+    public function update(User $parent, ParentRequest $request, UpdateParentAction $action): JsonResponse{
+        $action->handle($parent, $request->getEntity());
         return response()->json([
             'status' => 200,
             'message' => 'Parent updated successfully',

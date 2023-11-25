@@ -1,13 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\Parent\GetParentController;
-use App\Http\Controllers\Admin\Parent\GetStudentController;
+use App\Http\Controllers\Admin\Student\GetStudentController;
 use App\Http\Controllers\Admin\Teacher\GetTeacherController;
 use App\Http\Controllers\Admin\Parent\CreateParentController;
 use App\Http\Controllers\Admin\Student\CreateStudentController;
 use App\Http\Controllers\Admin\Teacher\CreateTeacherController;
 use App\Http\Controllers\Admin\Parent\DeleteParentController;
 use App\Http\Controllers\Admin\Teacher\DeleteTeacherController;
+use App\Http\Controllers\Admin\Student\DeleteStudentController;
 use App\Http\Controllers\Admin\Parent\UpdateParentController;
 use App\Http\Controllers\Admin\Student\UpdateStudentController;
 use App\Http\Controllers\Admin\Teacher\UpdateTeacherController;
@@ -49,10 +50,10 @@ Route::group(['middleware' => [
         'as' => 'students.',
         'prefix' => 'students',
     ], function () {
-        Route::get('/get', [GetStudentController::class, 'all'])->name('all');
-        Route::get('/get/{student}', [GetStudentController::class, 'byId'])->name('byId');
+        Route::get('/', [GetStudentController::class, 'all'])->name('all');
         Route::post('/create', [CreateStudentController::class, 'create'])->name('create');
-        Route::post('/update', [UpdateStudentController::class, 'update'])->name('update');
-        Route::post('/delete', [DeleteStudentController::class, 'delete'])->name('delete');
+        Route::get('/{student}', [GetStudentController::class, 'byId'])->name('byId');
+        Route::post('/{student}/update', [UpdateStudentController::class, 'update'])->name('update');
+        Route::post('/{student}/delete', [DeleteStudentController::class, 'delete'])->name('delete');
     });
 });

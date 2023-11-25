@@ -9,8 +9,8 @@ use Illuminate\Http\JsonResponse;
 use App\Models\User;
 
 class UpdateStudentController extends Controller {
-    public function update(User $user, StudentRequest $request, UpdateStudentAction $action): JsonResponse{
-        $data = $action->handle($user, $request->getEntity());
+    public function update(User $student, StudentRequest $request, UpdateStudentAction $action): JsonResponse{
+        $data = $action->handle($student, $request->getEntity());
         return response()->json([
             'status' => 200,
             'message' => 'Student updated successfully',

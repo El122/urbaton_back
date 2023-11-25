@@ -15,11 +15,11 @@ class GetStudentController extends Controller
 
     public function all(): JsonResponse
     {
-        $parents = $this->repository->getAll();
+        $students = $this->repository->getAll();
         return response()->json([
             'status' => 200,
             'message' => 'Students successfully get',
-            'data' => $parents,
+            'data' => $students,
         ]);
     }
 

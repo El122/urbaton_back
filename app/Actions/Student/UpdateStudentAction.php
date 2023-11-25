@@ -18,7 +18,7 @@ class UpdateStudentAction {
             } else {
                 $user->update($studentEntity->getModel());
             }
-            $user->student->update(['group_id' => $studentEntity->group]);
+            $user->student()->update(['group_id' => $studentEntity->group]);
             $user->refresh();
             return $user;
         });

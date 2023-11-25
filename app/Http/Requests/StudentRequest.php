@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rules\Password;
 use App\Exceptions\ValidationError;
 use App\Entities\User\StudentEntity;
+use Illuminate\Contracts\Validation\Validator;
 
 class StudentRequest extends FormRequest
 {
@@ -31,7 +32,7 @@ class StudentRequest extends FormRequest
                 ->symbols()
                 ->uncompromised(),
             ],
-            'group' => ['group', 'integer', 'exists:groups, id'],
+            'group' => ['required', 'integer', 'exists:groups,id'],
         ];
     }
 
