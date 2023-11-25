@@ -40,7 +40,7 @@ Route::group(['middleware' => [
             'prefix' => 'students',
         ], function () {
             Route::post('/attach', [ParentStudentController::class, 'add'])->name('add');
-            Route::post('/detach', [ParentStudentController::class, 'delete'])->name('delete');
+            Route::post('/{parentStudent}/detach', [ParentStudentController::class, 'delete'])->name('delete');
         });
     });
 

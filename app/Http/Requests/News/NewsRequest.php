@@ -21,6 +21,7 @@ class NewsRequest extends FormRequest {
             'title' => ['required', 'string'],
             'text' => ['required', 'string'],
             'type' => ['required', 'string'],
+            'photo' => ['nullable', 'image'],
         ];
     }
 
@@ -29,6 +30,7 @@ class NewsRequest extends FormRequest {
             $this->title,
             $this->text,
             $this->type,
+            $this->photo,
         );
     }
 }

@@ -7,14 +7,10 @@ use App\Http\Repositories\News\NewsRepository;
 use App\Models\News;
 use Illuminate\Http\JsonResponse;
 
-class GetNewsController extends Controller
-{
-    public function __construct(private NewsRepository $repository)
-    {
-    }
+class GetNewsController extends Controller {
+    public function __construct(private NewsRepository $repository) {}
 
-    public function all(): JsonResponse
-    {
+    public function all(): JsonResponse {
         $news = $this->repository->getAll();
         return response()->json([
             'status' => 200,
@@ -23,12 +19,11 @@ class GetNewsController extends Controller
         ]);
     }
 
-    public function byId(News $news): JsonResponse
-    {
+    public function byId(News $news): JsonResponse {
         return response()->json([
             'status' => 200,
             'message' => 'News successfully get',
-            'data' => $news,
+            'data' => $news->withPhoto(),
         ]);
     }
 }

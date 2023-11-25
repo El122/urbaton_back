@@ -2,21 +2,19 @@
 
 namespace App\Entities\News;
 
-class NewsEntity
-{
-    public string $title;
-    public string $text;
-    public string $type;
+use Illuminate\Http\UploadedFile;
 
-    public function __construct($title, $text, $type)
-    {
-        $this->title = $title;
-        $this->text = $text;
-        $this->type = $type;
+class NewsEntity {
+
+    public function __construct(
+        public string $title,
+        public string $text,
+        public string $type,
+        public ?UploadedFile $photo,
+    ) {
     }
 
-    public function getModel()
-    {
+    public function getModel() {
         return [
             'title' => $this->title,
             'text' => $this->text,

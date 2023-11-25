@@ -11,5 +11,7 @@ class UpdateNewsAction {
         $news->update([
             ...$newsEntity->getModel(),
         ]);
+        if($newsEntity->photo)
+            $news->addMedia($newsEntity->photo)->toMediaCollection('preview_picture');
     }
 }
