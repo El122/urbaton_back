@@ -5,7 +5,7 @@ namespace App\Entities\User;
 class TeacherEntity {
     public string $user_id;
     public ?int $experience;
-    public string $role;
+    public ?string $role;
 
     public function __construct($name, $surname, $patronymic, $email, $password, $experience, $role) {
         $this->name = $name;

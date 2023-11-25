@@ -20,4 +20,4 @@ Route::group(['middleware' => [
         Route::post('/{group}/update', [UpdateGroupController::class, 'update'])->name('update');
         Route::post('/{group}/delete', [DeleteGroupController::class, 'delete'])->name('delete');
     });
-});
+}); 
