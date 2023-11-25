@@ -24,7 +24,7 @@ class GetTeacherController extends Controller {
         return response()->json([
             'status' => Response::HTTP_OK,
             'message' => 'Teacher successfully get',
-            'data' => $teacher,
+            'data' => $teacher->withTeacherData(),
         ]);
     }
 }
