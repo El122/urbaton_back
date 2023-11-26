@@ -8,11 +8,11 @@ use App\Models\User;
 class GetTimetableAction {
     public function handle(string $date, ?int $group, ?int $teacher, ?int $child) {
        if(auth()->user()->isStudent())
-            $this->generateGroupTimetable($date, auth()->user()->student->group_id);
+            return $this->generateGroupTimetable($date, auth()->user()->student->group_id);
        if(auth()->user()->isTeacher())
-           $this->generateTeacherTimetable($date, auth()->id());
+            return $this->generateTeacherTimetable($date, auth()->id());
         if(auth()->user()->isParent() && auth()->user()->children()->where(fn($item) => $item->student_id == $child))
-            $this->generateGroupTimetable($date, User::find($child)->student->group_id);
+            return $this->generateGroupTimetable($date, User::find($child)->student->group_id);
         if($group) {
             return $this->generateGroupTimetable($date, $group);
         }
