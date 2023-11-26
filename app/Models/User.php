@@ -53,6 +53,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    public function fullName(): string {
+        return $this->surname . ' ' . $this->name . ' ' . $this->patronymic;
+    }
+
     public function student(): HasOne {
         return $this->hasOne(Student::class);
     }
