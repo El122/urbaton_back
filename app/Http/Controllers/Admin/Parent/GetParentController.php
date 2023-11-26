@@ -28,7 +28,7 @@ class GetParentController extends Controller
         return response()->json([
             'status' => 200,
             'message' => 'Parent successfully get',
-            'data' => $parent,
+            'data' => $parent->withParentData(),
         ]);
     }
 }

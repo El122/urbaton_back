@@ -17,4 +17,8 @@ class Student extends Model
     public function group(): BelongsTo {
         return $this->belongsTo(Group::class);
     }
+
+    public function user(): BelongsTo {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -87,6 +87,14 @@ class User extends Authenticatable
         return $this;
     }
 
+    public function withParentData(): static {
+        foreach($this->children as $child) {
+            $child->group;
+            $child->user;
+        }
+        return $this;
+    }
+
     public function children(): BelongsToMany {
         return $this->belongsToMany(Student::class, ParentStudent::class, 'parent_id', 'student_id');
     }

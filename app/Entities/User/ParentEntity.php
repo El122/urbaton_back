@@ -10,8 +10,9 @@ class ParentEntity
     public string $email;
     public string $phone;
     public ?string $password;
+    public ?int $children;
 
-    public function __construct($name, $surname, $patronymic, $email, $phone, $password)
+    public function __construct($name, $surname, $patronymic, $email, $phone, $password, $children = null)
     {
         $this->name = $name;
         $this->surname = $surname;
@@ -19,6 +20,7 @@ class ParentEntity
         $this->email = $email;
         $this->phone = $phone;
         $this->password = $password;
+        $this->children = $children;
     }
 
     public function getModel()
