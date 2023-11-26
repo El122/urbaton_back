@@ -86,24 +86,24 @@ class User extends Authenticatable
         $this->student?->group;
         return $this;
     }
-    
+
     public function children(): BelongsToMany {
         return $this->belongsToMany(Student::class, ParentStudent::class);
     }
 
     public function isStudent():bool {
-        return $this->hasRole(UserRole::ROLE_STUDENT);
+        return $this->hasRole(UserRoles::ROLE_STUDENT);
     }
 
     public function isTeacher():bool {
-        return $this->hasRole(UserRole::ROLE_TEACHER);
+        return $this->hasRole(UserRoles::ROLE_TEACHER);
     }
 
     public function isParent():bool {
-        return $this->hasRole(UserRole::ROLE_PARENT);
+        return $this->hasRole(UserRoles::ROLE_PARENT);
     }
 
     public function isAdmin():bool {
-        return $this->hasRole(UserRole::ROLE_ADMIN);
+        return $this->hasRole(UserRoles::ROLE_ADMIN);
     }
 }
