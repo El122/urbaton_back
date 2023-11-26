@@ -30,7 +30,7 @@ class TimetableController extends Controller {
     }
 
     public function get(Request $request, GetTimetableAction $action): JsonResponse {
-        $timetable = $action->handle($request->date, $request->group, $request->teacher);
+        $timetable = $action->handle($request->date, $request->group, $request->teacher, $request->child);
         return response()->json([
             'status' => Response::HTTP_OK,
             'message' => 'Timetable successfully get',

@@ -14,6 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Student;
 use App\Models\Teacher;
 use Spatie\Permission\Traits\HasRoles;
+use App\Enums\UserRoles;
 
 class User extends Authenticatable
 {
@@ -66,7 +67,7 @@ class User extends Authenticatable
     }
 
     public function subjects(): BelongsToMany {
-        return $this->belongsToMany(Subject::class, TeacherSubject::class)->withPivot('plan', 'year');
+        return $this->belongsToMany(Subject::class, TeacherSubject::class)->withPivot('current', 'total', 'year');
     }
 
     public function groups(): HasMany {
@@ -75,7 +76,34 @@ class User extends Authenticatable
 
     public function withTeacherData(): static {
         $this->subjects;
+        $this->teacher;
         $this->groups;
         return $this;
+    }
+
+    public function withStudentData(): static {
+        $this->student;
+        $this->student?->group;
+        return $this;
+    }
+    
+    public function children(): BelongsToMany {
+        return $this->belongsToMany(Student::class, ParentStudent::class);
+    }
+
+    public function isStudent():bool {
+        return $this->hasRole(UserRole::ROLE_STUDENT);
+    }
+
+    public function isTeacher():bool {
+        return $this->hasRole(UserRole::ROLE_TEACHER);
+    }
+
+    public function isParent():bool {
+        return $this->hasRole(UserRole::ROLE_PARENT);
+    }
+
+    public function isAdmin():bool {
+        return $this->hasRole(UserRole::ROLE_ADMIN);
     }
 }
