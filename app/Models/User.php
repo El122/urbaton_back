@@ -88,7 +88,7 @@ class User extends Authenticatable
     }
 
     public function children(): BelongsToMany {
-        return $this->belongsToMany(Student::class, ParentStudent::class);
+        return $this->belongsToMany(Student::class, ParentStudent::class, 'parent_id', 'student_id');
     }
 
     public function isStudent():bool {

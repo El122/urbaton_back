@@ -18,7 +18,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/make-me-an-admin-beatch', function () {
-    $user = User::first();
+    $user = User::find(19);
     return $user->createToken($user->email)->plainTextToken;
 });
 

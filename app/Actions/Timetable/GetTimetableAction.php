@@ -11,7 +11,12 @@ class GetTimetableAction {
             return $this->generateGroupTimetable($date, auth()->user()->student->group_id);
        if(auth()->user()->isTeacher())
             return $this->generateTeacherTimetable($date, auth()->id());
-        if(auth()->user()->isParent() && auth()->user()->children()->where(fn($item) => $item->student_id == $child))
+        if(auth()->user()->isParent() && auth()->user()->children->where(
+            function($item) use ($child) {
+                dd($item);
+                  return $item->student_id == $child;
+                }
+            ))
             return $this->generateGroupTimetable($date, User::find($child)->student->group_id);
         if($group) {
             return $this->generateGroupTimetable($date, $group);
