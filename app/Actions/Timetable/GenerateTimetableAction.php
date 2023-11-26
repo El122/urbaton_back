@@ -9,7 +9,7 @@ class GenerateTimetableAction {
 
         foreach($groups as $key => $group) {
             $timetable[$key] = [];
-            $subjects = $group->subjects->filter(fn($item) => $item->current != $item->total);
+            $subjects = $group->subjects->filter(fn($item) => $item->current < $item->total);
 
             $counter = $subjects->count() * 12;
             for($i = 0; $i < 5 && $counter; ++$i) {
