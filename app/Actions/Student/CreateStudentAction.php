@@ -23,6 +23,8 @@ class CreateStudentAction
                 'user_id' => $user->id,
             ]);
             $user->syncRoles(UserRoles::ROLE_STUDENT->value);
+            $user->student;
+            $user->student->group;
             return $user;
         });
     }

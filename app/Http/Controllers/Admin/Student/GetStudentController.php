@@ -28,7 +28,7 @@ class GetStudentController extends Controller
         return response()->json([
             'status' => 200,
             'message' => 'Student successfully get',
-            'data' => $student,
+            'data' => $student->withStudentData(),
         ]);
     }
 }

@@ -16,7 +16,7 @@ class CreateTeacherAction {
                 ...$teacherEntity->getModel(),
                 'password' => Hash::make($teacherEntity->password),
             ]);
-            
+
             Teacher::create([
                 'experience' => $teacherEntity->experience,
                 'role' => $teacherEntity->role,
@@ -24,6 +24,7 @@ class CreateTeacherAction {
             ]);
 
             $user->syncRoles(UserRoles::ROLE_TEACHER->value);
+            $user->teacher;
             return $user;
         });
     }
